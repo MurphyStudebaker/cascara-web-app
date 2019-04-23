@@ -1,0 +1,20 @@
+@import '_Color.scss';
+
+footer {
+  .content {
+    text-align: center;
+    padding: 1em 0;
+    //width: 80%;
+    //margin: auto;
+    //display: flex;
+    //flex-flow: row wrap;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  footer {
+    .content {
+      width: 80%;
+    }
+  }
+}

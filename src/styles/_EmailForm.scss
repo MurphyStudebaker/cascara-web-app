@@ -1,0 +1,36 @@
+.email-input {
+    display: flex;
+    flex-flow: row wrap;
+    .text-input {
+        border: none;
+        border-radius: .4em;
+        box-shadow: 5px 5px 15px #e0e0e0;
+        height: 4em;
+        width: 25em;
+        padding-left: 1rem;
+    }
+    .submit-button {
+        margin-left: 1em;
+        border: none;
+        border-radius: .4em;
+        //box-shadow: 5px 5px 15px #e0e0e0;
+        background: $froth;
+        height: 4em;
+        width: 12em;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .email-input {
+        display: flex;
+        flex-flow: column;
+        .text-input {
+            width: 100%;
+        }
+        .submit-button {
+            margin-top: 2em;
+            margin-left: 0;
+            width: 100%;
+        }
+    }
+}

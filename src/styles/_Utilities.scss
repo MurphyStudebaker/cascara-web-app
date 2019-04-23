@@ -1,0 +1,84 @@
+@import './Color';
+
+/* Reset */
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Spacing */
+section {
+  padding-top: 5rem;
+  min-height: 15rem;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+.mt-s {
+  margin-top: .5rem;
+}
+
+.mt-m {
+  margin-top: 1rem;
+}
+
+.mt-l {
+  margin-top: 2rem;
+}
+
+.pb-l {
+  padding-bottom: 8rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Common Components */
+.clean-list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* Flex */
+.flex-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Coloring */
+.dark {
+  color: $bean;
+}
+
+.highlight {
+  color: $froth;
+}
+
+.secondary {
+  color: $cherry;
+}
+
+.white {
+  background-color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  section {
+    width: 80%;
+  }
+}
+
+.spacer {
+  height: 10rem;
+}

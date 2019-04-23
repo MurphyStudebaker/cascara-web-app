@@ -1,0 +1,14 @@
+.filters {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1rem;
+    li {
+        background-color: white;
+        padding: 1rem;
+        border-radius: .4rem;
+        font-size: 1.5rem;
+    }
+}
