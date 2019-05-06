@@ -3,7 +3,14 @@
 .navbar {
     background-color: white;
     margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    justify-content: space-between;
     .brand {
         font-size: 1.5rem;
+    }
+    .nav-links {
+        align-self: center;
+        font-size: 2rem;
     }
 }
