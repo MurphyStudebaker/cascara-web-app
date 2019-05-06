@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import IconBlock from './IconBlock';
 import EmailForm from './EmailForm';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 
 export default class Home extends Component {
   render () {
@@ -12,7 +14,7 @@ export default class Home extends Component {
             <h1 className="title"> 
               We're documenting every coffeehouse in Los Angeles.
             </h1>
-            <a class="button" href="https://www.instagram.com/getcascara/"> Follow us on Instagram </a>
+            <Link className="button" to="/contribute"> Help us out! </Link>
           </section>
           <section>
             <h1 className="title">
