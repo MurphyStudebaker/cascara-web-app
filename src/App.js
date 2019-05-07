@@ -7,6 +7,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Home from './Home';
 import EmbeddedForm from './contribute/EmbeddedForm';
+import Database from './database/Database';
 
 library.add(fab)
 
@@ -17,7 +18,8 @@ class App extends Component {
         <Header />
         <Router>
           <Route exact path="/" component={Home} />
-          <Route path="/contribute" component={EmbeddedForm} />
+          <Route path="/contribute/" component={EmbeddedForm} />
+          <Route path="/app/" component={Database} />
         </Router>
         <Footer />
       </div>
