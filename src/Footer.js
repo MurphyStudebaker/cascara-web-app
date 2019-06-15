@@ -7,10 +7,10 @@ import { Facebook } from '@fortawesome/free-solid-svg-icons';
 export default class Footer extends Component {
   render () {
     return (
-      <footer>
-        <div className="content">
-          <p> Cascara |   
-            <a href="mailto:hello@getcascara.com">hello@getcascara.com </a>
+      <footer className="footer bg-light mb-0">
+        <div className="container text-center pt-4">
+          <p className="text-muted"> © 2019 Cascara |   
+            <a href="mailto:hello@getcascara.com"> hello@getcascara.com </a>
           </p>
         </div>
       </footer>

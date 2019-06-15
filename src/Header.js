@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 export default class Header extends Component {
   /*
@@ -20,8 +21,8 @@ export default class Header extends Component {
   */
   render() {
     return (
-      <div className="navbar">
-        <div className="brand">
+      <div className="container navbar">
+        <div className="navbar-brand">
           <h4> ☕  CASCARA </h4>
         </div>
         <div className="nav-links">

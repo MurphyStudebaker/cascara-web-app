@@ -1,12 +1,6 @@
 /* Utilities and Variables */
-@import '_Utilities';
+@import '_BootstrapOverride';
+@import '_Cards';
+@import '_Color';
 @import '_Font';
-@import '_Button';
-
-/* Styled Components */
-@import '_Navbar';
-@import '_Footer';
-@import '_IconBlock';
-@import '_EmailForm';
 @import '_Filters';
-@import '_Form';

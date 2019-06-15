@@ -10,17 +10,17 @@ export default class Home extends Component {
     return (
       <div>
         <div className="foam">
-          <section className="section split-screen pb-l">
-            <h1 className="title"> 
+          <section className="container py-5">
+            <h1 className="title pt-5"> 
               We're documenting every coffeehouse in Los Angeles.
             </h1>
-            <Link className="button" to="/contribute"> Help us out! </Link>
+            <Link className="btn btn-lg btn-primary mt-3" to="/contribute"> Help us out! </Link>
           </section>
-          <section>
+          <section className="container py-5">
             <h1 className="title">
               Detailed filters to find exactly what you're looking for.
             </h1>
-            <ul className="filters">
+            <ul className="filters pt-3">
               <li>☕ Organic Coffee </li>
               <li>🔌 Plenty of Outlets </li>
               <li>🥐 Pastries </li>
@@ -33,7 +33,7 @@ export default class Home extends Component {
               <li>🎸 Live Music </li>
             </ul>
           </section>
-          <section>
+          <section className="container py-5">
             <h1 className="title"> Own a coffeehouse? Let's talk. </h1>
             <EmailForm />
             <div class="spacer"></div>
