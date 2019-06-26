@@ -18,11 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Router>
-          <Route exact path="/" component={Home} />
-          <Route path="/contribute/" component={EmbeddedForm} />
-          <Route path="/app/" component={Database} />
-        </Router>
+        <Database />
         <Footer />
       </div>
     );
