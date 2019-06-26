@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CoffeeCard from './CoffeeCard';
+import api from '../utils/api'
 
 import Reactotron from 'reactotron-react-js'
 
@@ -14,13 +15,10 @@ export default class Database extends Component {
 
     //Runs after everything loads
     componentDidMount() {
-        fetch('API KEY GOES HERE')
-        .then((resp) => resp.json())
-        .then(data => {
-            this.setState({ coffeehouses: data.records});
+        api.readAll().then(response => {
+            this.setState({ coffeehouses: response });
         }).catch(err => {
-            // Runs if there is an error fetching records from Airtable
-            Reactotron.log("ERROR FETCHING: " + err);
+            console.log(err);
         });
     }
 
@@ -31,13 +29,13 @@ export default class Database extends Component {
                     <h4 className="pt-5 title"> Find your new home away from home</h4>
                     <form className="form-inline pt-3 mb-5" name="coffeehouse-owner" method="POST">
                         <input className="form-control w-75 mr-2 mb-5" type="search" name="search" placeholder="Search by name or neighborhood" />
-                        <button className="btn btn-primary mb-5" type="submit">Search</button>
+                        <button className="btn btn-primary mb-5">Search</button>
                     </form>
                 </div>
                 <div className="container mt-5">
                     <h5 className="">Staff Picks in Los Angeles </h5>
                     <div className="card-deck">
-                        {this.state.coffeehouses.map(coffeehouse => <CoffeeCard {...coffeehouse['fields']} />)}
+                        {this.state.coffeehouses.map(coffeehouse => <CoffeeCard {...coffeehouse} />)}
                     </div>
                 </div>
             </div>
