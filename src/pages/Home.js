@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import IconBlock from './IconBlock';
-import EmailForm from './EmailForm';
+import EmailForm from '../EmailForm';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
 

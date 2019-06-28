@@ -7,8 +7,7 @@ import { faCoffee, faWifi } from '@fortawesome/free-solid-svg-icons'
 
 import Header from './Header';
 import Footer from './Footer';
-import Home from './Home';
-import EmbeddedForm from './contribute/EmbeddedForm';
+import Home from './pages/Home';
 import Database from './app/Database';
 import CoffeehousePage from './app/CoffeehousePage'
 
@@ -21,6 +20,7 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={Database} />
+          <Route path="/about" component={Home} />
           <Route path="/:id" component={CoffeehousePage} />
         </Switch>
         <Footer />
