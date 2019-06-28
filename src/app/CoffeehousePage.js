@@ -29,7 +29,54 @@ export class CoffeehousePage extends Component {
         return this.state.loading ? (
             <div>Loading...</div>
         ) : (
-            <h1>I am {this.state.currentCoffeehouse.name} </h1>
+            <div>
+            <img src="https://www.discovercentralma.org/default/assets/Image/cake%20shop%20cafe/cafe1sm.png" className="img-fluid"/>
+            <div className="container">
+                <h1 className="mt-5">{this.state.currentCoffeehouse.name}</h1>
+                <table className="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Address</th>
+                            <td>
+                                {this.state.currentCoffeehouse.address + " " + 
+                                this.state.currentCoffeehouse.city + ", " + 
+                                this.state.currentCoffeehouse.state}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Neighborhood</th>
+                            <td>
+                                {this.state.currentCoffeehouse.neighborhood}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Outlets</th>
+                            <td>{this.state.currentCoffeehouse.outletDesc}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Coffee Score</th>
+                            <td>{this.state.currentCoffeehouse.coffeeScore}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Wifi Score</th>
+                            <td>{this.state.currentCoffeehouse.wifiScore}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Amenities</th>
+                            <div>
+                                {this.state.currentCoffeehouse.amenities.map(entry => <td className="badge badge-light m-1">{entry}</td>)}
+                            </div>
+                        </tr>
+                        <tr>
+                            <th scope="row">Atmosphere</th>
+                            <div>
+                                {this.state.currentCoffeehouse.atmosphere.map(entry => <td className="badge badge-light m-1">{entry}</td>)}
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
         )
     }
 }

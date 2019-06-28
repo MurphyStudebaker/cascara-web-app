@@ -17,10 +17,14 @@ library.add(fab, faCoffee, faWifi)
 class App extends Component {
   render() {
     return (
-      <Switch>
-        <Route exact path="/" component={Database} />
-        <Route path="/:id" component={CoffeehousePage} />
-      </Switch>
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Database} />
+          <Route path="/:id" component={CoffeehousePage} />
+        </Switch>
+        <Footer />
+      </div>
     );
   }
 }

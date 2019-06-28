@@ -28,7 +28,16 @@ exports.handler = function(event, context, callback) {
         return;
       }
       const house = {
-        name: record.get('name')
+        name: record.get('name'),
+        address: record.get('streetAddress'),
+        neighborhood : record.get('neighborhood'),
+        city: record.get('city'),
+        state: record.get('state'),
+        coffeeScore: record.get('coffeeScore'),
+        wifiScore: record.get('wifiScore'),
+        outletDesc: record.get('outletDesc'),
+        amenities: record.get('amenities'),
+        atmosphere: record.get('atmosphere'),
       }
       send(house);
     })
