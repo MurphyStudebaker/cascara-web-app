@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
+import {render} from 'react-dom';
+import { BrowserRouter } from "react-router-dom";
 import './ReactotronConfig'
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -10,4 +10,9 @@ import './index.css';
 import './styles/main.scss';
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>,
+    document.querySelector('#root')
+)

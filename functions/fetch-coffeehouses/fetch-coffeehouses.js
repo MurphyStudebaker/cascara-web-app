@@ -31,6 +31,7 @@ exports.handler = function(event, context, callback) {
     records.forEach(function(record) {
       console.log('Retrieved: ', record.get('name'));
       houses.push({
+        id: record['id'],
         name: record.get('name'),
         neighborhood: record.get('neighborhood'),
         coffeeScore: record.get('coffeeScore'),

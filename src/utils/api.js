@@ -15,8 +15,17 @@ const search = async (data) =>
         body: JSON.stringify(data),
     })).json();
 
+const fetchWithId = (data) =>
+    fetch('/.netlify/functions/fetch-with-id/fetch-with-id.js/'+data, 
+    {
+        method: 'POST',
+    }).then(response => {
+        return response.json()
+    })
+
 export default {
     readAll: readAll,
     search: search,
+    fetchWithId: fetchWithId,
     // add additional API export statements here
 }

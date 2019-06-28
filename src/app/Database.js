@@ -22,33 +22,14 @@ export default class Database extends Component {
         });
     }
 
-    filterByNeighborhood = (searchText) => {
-        api.search({search: searchText})
-        .then(response => {
-            //console.log("response: " + response);
-            this.setState({ coffeehouses: response });
-        }).catch(err=> {
-            console.log(err);
-        });
-    }
-
     render () {
         return (
-            <div className="foam">
-                <div className="container pt-5 search">
-                    <h4 className="pt-5 title"> Find your new home away from home</h4>
-                    <form className="form-inline pt-3 mb-5" name="coffeehouse-owner" method="POST">
-                        <input className="form-control w-75 mr-2 mb-5" type="search" name="search" placeholder="Search by name or neighborhood" />
-                        <input className="btn btn-primary mb-5" type="button" value="Submit" />
-                    </form>
-                </div>
                 <div className="container mt-5">
                     <h5 className="">Staff Picks in Los Angeles </h5>
                     <div className="card-deck">
                         {this.state.coffeehouses.map(coffeehouse => <CoffeeCard {...coffeehouse} />)}
                     </div>
                 </div>
-            </div>
         );
     }
 }
