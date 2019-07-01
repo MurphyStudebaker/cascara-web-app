@@ -26,6 +26,12 @@ section {
   min-height: 100vh;
 }
 
+.img-header {
+  width: 100vw;
+  height: 25rem;
+  object-fit: cover;
+}
+
 .mt-s {
   margin-top: .5rem;
 }

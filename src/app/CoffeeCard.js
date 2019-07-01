@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import Reactotron from 'reactotron-react-js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+import DefaultPhoto from './cascara-default-house.png'
 
-const CoffeeCard = ({id, name, streetAddress, city, coffeeScore, wifiScore, amenities, atmosphere, outletDesc, parking, photo, neighborhood, state, coffeeCost}) => (
+const CoffeeCard = ({id, img, name, streetAddress, city, coffeeScore, wifiScore, amenities, atmosphere, outletDesc, parking, photo, neighborhood, state, coffeeCost}) => (
     <Link to={"/" + id} className="card m-2">
-        <img className="card-img-top" src="https://www.discovercentralma.org/default/assets/Image/cake%20shop%20cafe/cafe1sm.png" alt="Photo of coffeehouse" />
+        <img className="card-img-top" src={img} alt="Photo of coffeehouse" />
         <div className="card-body">
             <h3 className="card-title">{name}</h3>
             <h5 className="card-subtitle text-muted mb-2"> {neighborhood} </h5>

@@ -27,15 +27,25 @@ exports.handler = function(event, context, callback) {
         send(err);
         return;
       }
+      
+      const checkDefault = (data) => {
+        return record.get(data) ? (
+          record.get(data)
+        ) : (
+          "No data available"
+        )
+      }
+
       const house = {
+        img: record.get('photo')[0].thumbnails.full.url,
         name: record.get('name'),
         address: record.get('streetAddress'),
-        neighborhood : record.get('neighborhood'),
+        neighborhood : checkDefault('neighborhood'),
         city: record.get('city'),
         state: record.get('state'),
-        coffeeScore: record.get('coffeeScore'),
-        wifiScore: record.get('wifiScore'),
-        outletDesc: record.get('outletDesc'),
+        coffeeScore: checkDefault('coffeeScore'),
+        wifiScore: checkDefault('wifiScore'),
+        outletDesc: checkDefault('outletDesc'),
         amenities: record.get('amenities'),
         atmosphere: record.get('atmosphere'),
       }

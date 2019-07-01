@@ -25,12 +25,20 @@ export class CoffeehousePage extends Component {
         })
     }
 
+    checkForDefault = data => {
+        return data === "" || data === null ? (
+          "No data available"
+        ) : (
+          data
+        )
+      }
+
     render () {
         return this.state.loading ? (
             <div>Loading...</div>
         ) : (
             <div>
-            <img src="https://www.discovercentralma.org/default/assets/Image/cake%20shop%20cafe/cafe1sm.png" className="img-fluid"/>
+            <img src={this.state.currentCoffeehouse.img} className="img-header"/>
             <div className="container">
                 <h1 className="mt-5">{this.state.currentCoffeehouse.name}</h1>
                 <table className="table table-borderless">
@@ -51,7 +59,7 @@ export class CoffeehousePage extends Component {
                         </tr>
                         <tr>
                             <th scope="row">Outlets</th>
-                            <td>{this.state.currentCoffeehouse.outletDesc}</td>
+                            <td>{this.checkForDefault(this.state.currentCoffeehouse.outletDesc)}</td>
                         </tr>
                         <tr>
                             <th scope="row">Coffee Score</th>
