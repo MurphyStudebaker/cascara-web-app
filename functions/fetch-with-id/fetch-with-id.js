@@ -46,6 +46,7 @@ exports.handler = function(event, context, callback) {
         coffeeScore: checkDefault('coffeeScore'),
         wifiScore: checkDefault('wifiScore'),
         outletDesc: checkDefault('outletDesc'),
+        seatingDesc: checkDefault('seatingDesc'),
         amenities: record.get('amenities'),
         atmosphere: record.get('atmosphere'),
       }

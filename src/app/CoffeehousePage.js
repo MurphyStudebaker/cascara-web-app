@@ -66,6 +66,10 @@ export class CoffeehousePage extends Component {
                             <td>{this.checkForDefault(this.state.currentCoffeehouse.outletDesc)}</td>
                         </tr>
                         <tr>
+                            <th scope="row">Seating</th>
+                            <td>{this.checkForDefault(this.state.currentCoffeehouse.seatingDesc)}</td>
+                        </tr>
+                        <tr>
                             <th scope="row">Coffee Score</th>
                             <td>{this.state.currentCoffeehouse.coffeeScore}</td>
                         </tr>
