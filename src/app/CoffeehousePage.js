@@ -35,7 +35,11 @@ export class CoffeehousePage extends Component {
 
     render () {
         return this.state.loading ? (
-            <div>Loading...</div>
+            <div class="loader">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         ) : (
             <div>
             <img src={this.state.currentCoffeehouse.img} className="img-header"/>

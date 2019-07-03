@@ -33,7 +33,11 @@ export default class SearchResults extends Component {
 
     render () {
         return this.state.loading ? (
-            <div>Loading...</div>
+            <div class="loader">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         ) : (
             <div className="container mt-5">
                 <h5 className=""> Search Results for {this.state.id} </h5>

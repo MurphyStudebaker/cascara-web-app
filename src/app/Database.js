@@ -11,7 +11,7 @@ export default class Database extends Component {
         super(props);
         this.state = {
             coffeehouses: [],
-            loading: false,
+            loading: true,
             results: false,
             resultTerm: '',
         };
@@ -24,7 +24,7 @@ export default class Database extends Component {
 
     fetchAll() {
         api.readAll().then(response => {
-            this.setState({ coffeehouses: response });
+            this.setState({ coffeehouses: response, loading: false });
         }).catch(err => {
             console.log(err);
         });
@@ -33,7 +33,11 @@ export default class Database extends Component {
     render () {
         return (
             this.state.loading ? (
-                <div>Loading...</div>
+                <div class="loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             ) : (
             <div>
                 <div className="foam">
