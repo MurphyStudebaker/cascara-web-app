@@ -7,7 +7,7 @@ import logo from './cascara_icon_100px.svg'
 export default class Header extends Component {
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-light container justify-content-between d-flex">
+      <nav class="navbar navbar-expand-lg navbar-light container">
         <div className="">
           <Link to="/" className="navbar-brand">
             <img src={logo} alt="Logo" width="30" height="30" className="d-inline-block align-top mr-1"/>

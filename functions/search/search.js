@@ -3,7 +3,8 @@ const Airtable = require('airtable');
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 exports.handler = function(event, context, callback) {
   const data = JSON.parse(event.body);
-  const searchTerm = data.search;
+  const term = data.search;
+  const type = data.type;
   
   const send = body => {
     callback(null, {
@@ -20,10 +21,10 @@ exports.handler = function(event, context, callback) {
   });
   var base = Airtable.base(API_CLIENT_ID);
 
-  console.log("Looking for " + searchTerm);
+  console.log("Looking for " + term);
   const results = [];
 
-  const formula = "{neighborhood}='" + searchTerm + "'";
+  const formula = "{neighborhood}='" + term + "'";
 
   base('Coffeehouses').select({
     view: "Grid view",
@@ -37,6 +38,8 @@ exports.handler = function(event, context, callback) {
     records.forEach(function(record) {
       console.log('Retrieved: ', record.get('name'));
       results.push({
+        img: record.get('photo')[0].thumbnails.large.url,
+        id: record['id'],
         name: record.get('name'),
         neighborhood: record.get('neighborhood'),
         coffeeScore: record.get('coffeeScore'),

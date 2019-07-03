@@ -10,6 +10,7 @@ import Footer from './Footer';
 import Home from './pages/Home';
 import Database from './app/Database';
 import CoffeehousePage from './app/CoffeehousePage'
+import SearchResults from './app/SearchResults'
 
 library.add(fab, faCoffee, faWifi)
 
@@ -21,6 +22,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Database} />
           <Route path="/about" component={Home} />
+          <Route path="/search/:id" component={SearchResults} />
           <Route path="/:id" component={CoffeehousePage} />
         </Switch>
         <Footer />

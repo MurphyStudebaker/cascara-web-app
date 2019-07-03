@@ -1,5 +1,6 @@
-import React from 'react';
-
+import React from 'react'
+import api from '../utils/api.js'
+import { Link } from 'react-router-dom'
 
 export default class SearchForm extends React.Component {
     constructor(props) {
@@ -15,25 +16,15 @@ export default class SearchForm extends React.Component {
     }
 
     handleSubmit(event) {
-
+        this.props.filter(this.state.value)
         event.preventDefault();
-    }
-
-    filterByNeighborhood = (searchText) => {
-        api.search({search: searchText})
-        .then(response => {
-            //console.log("response: " + response);
-            //this.setState({ coffeehouses: response });
-        }).catch(err=> {
-            console.log(err);
-        });
     }
 
     render() {
         return (
-            <form className="form-inline pt-3 mb-5" onSubmit={}>
-                <input className="form-control w-75 mr-2 mb-5" type="search" name="search" placeholder="Search by name or neighborhood" value={this.state.value} onChange={this.handleChange}/>
-                <input className="btn btn-primary mb-5" type="submit" value="Submit" />
+            <form className="form-inline pt-3 mb-5" onSubmit={this.handleSubmit}>
+                <input className="form-control w-75 mr-2 mb-5" type="search" name="search" placeholder="Search by neighborhood" value={this.state.value} onChange={this.handleChange}/>
+                <Link to={"/search/"+this.state.value}><input className="btn btn-primary mb-5" type="submit" value="Submit" /></Link>
             </form>
         );
     }
