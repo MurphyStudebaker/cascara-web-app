@@ -22,7 +22,7 @@ export default class SearchForm extends React.Component {
 
     render() {
         return (
-            <form className="form-inline pt-3 mb-5" onSubmit={this.handleSubmit}>
+            <form className="form-inline pt-3" onSubmit={this.handleSubmit}>
                 <input className="form-control w-75 mr-2 mb-5" type="search" name="search" placeholder="Search by neighborhood" value={this.state.value} onChange={this.handleChange}/>
                 <Link to={"/search/"+this.state.value}><input className="btn btn-primary mb-5" type="submit" value="Submit" /></Link>
             </form>
