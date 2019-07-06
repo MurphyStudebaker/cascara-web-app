@@ -33,7 +33,7 @@ export default class SearchResults extends Component {
 
     render () {
         return this.state.loading ? (
-            <div class="loader">
+            <div className="loader h-100">
                 <span></span>
                 <span></span>
                 <span></span>

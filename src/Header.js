@@ -7,16 +7,14 @@ import logo from './cascara_icon_100px.svg'
 export default class Header extends Component {
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-light container">
-        <div className="">
-          <Link to="/" className="navbar-brand">
-            <img src={logo} alt="Logo" width="30" height="30" className="d-inline-block align-top mr-1"/>
+      <nav className="navbar navbar-expand-lg navbar-light container">
+        <Link to="/" className="navbar-brand">
+          <img src={logo} alt="Logo" width="30" height="30" className="d-inline-block align-top mr-1"/>
             Cascara
-          </Link>      
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
+        </Link>      
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
