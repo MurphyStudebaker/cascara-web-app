@@ -51,11 +51,11 @@ export default class Database extends Component {
                 <div className="container">
                     <div className="d-flex justify-content-between">
                         <h5 className="">Staff Picks in Los Angeles </h5>
+                        {/*
                         <button className="d-flex justify-content-end btn btn-outline-primary pb-0" data-toggle="modal" data-target="#filterModal">
-                            <p className="pb-0 mr-1">Filter</p>
                             <FontAwesomeIcon icon="filter" className="pb-0"/>
                         </button>
-                        <FilterModal />
+                        <FilterModal />*/}
                     </div>
                     <div className="card-deck">
                         {this.state.coffeehouses.map(coffeehouse => <CoffeeCard {...coffeehouse} />)}

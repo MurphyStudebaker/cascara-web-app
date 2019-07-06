@@ -39,12 +39,16 @@ export default class SearchResults extends Component {
                 <span></span>
             </div>
         ) : (
-            <div className="container mt-5">
+            <main className="container mt-5">
                 <h5 className=""> Search Results for {this.state.id} </h5>
+                { this.state.searchResults.length > 0 ? (
                 <div className="card-deck">
                     {this.state.searchResults.map(coffeehouse => <CoffeeCard {...coffeehouse} />)}
-                </div>
-            </div>
+                </div> ) : (
+                    <p>No coffeehouses match your criteria.</p>
+                )
+                }
+            </main>
         )
     }
 }

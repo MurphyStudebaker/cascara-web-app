@@ -17,14 +17,16 @@ library.add(fab, faCoffee, faWifi, faFilter)
 class App extends Component {
   render() {
     return (
-      <div className="d-flex flex-column h-100">
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Database} />
-          <Route path="/about" component={Home} />
-          <Route path="/search/:id" component={SearchResults} />
-          <Route path="/:id" component={CoffeehousePage} />
-        </Switch>
+      <div className="d-flex flex-column min-vh-100">
+        <div className="flex-shrink-0">
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Database} />
+            <Route path="/about" component={Home} />
+            <Route path="/search/:id" component={SearchResults} />
+            <Route path="/:id" component={CoffeehousePage} />
+          </Switch>
+        </div>
         <Footer />
       </div>
     );
