@@ -12,6 +12,10 @@ a{
   color: $bean;
 }
 
+.btn:focus,.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
 /* Spacing */
 section {
   padding-top: 5rem;

@@ -1,19 +1,33 @@
 import React, { Component } from 'react'
+import SelectableChip from './SelectableChip'
 
 export default class FilterModal extends Component {
     //Initiates application-wide variables
     constructor(props) {
         super(props);
         this.state = {
-            atmosphereOptions: [
-                {name: "Option 1", selected: false},
-                {name: "Option 2", selected: false}],
+            options: this.props.options,
+            selections: [],
         }
-        this.handleChipSelect = this.handleChipSelect.bind(this)
+        this.updateSelections = this.updateSelections.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.getFilterOptions = this.getFilterOptions.bind(this);
     }
 
-    handleChipSelect() {
+    updateSelections() {
+        console.log("SAVING SELECTIONS")
+    }
 
+    handleClick(object) {
+        this.props.handleClick(object);
+    }
+
+    getFilterOptions(category) {
+        return this.state.options.filter(
+            (option) => {
+                return option.category === category;
+            }
+        )
     }
 
     render () {
@@ -30,14 +44,21 @@ export default class FilterModal extends Component {
                 <div class="modal-body">
                     <h3>Atmosphere</h3>
                     <div>
-                        {this.state.atmosphereOptions.map(option => 
-                        <button className="badge badge-light p-1" onClick={this.handleChipSelect}>
-                        {option.name}</button> )}                
+                        {
+                            this.getFilterOptions("atmosphere").map((option, i) => 
+                            <SelectableChip key={i} index={i} text={option.text} category="atmosphere" selected={option.selected} handleClick={this.handleClick}/> )
+                        }                
+                    </div>
+                    <h3>Amenities</h3>
+                    <div>
+                        {
+                            this.getFilterOptions("amenities").map((option, i) => 
+                            <SelectableChip key={i} index={i} text={option.text} category="amenities" selected={option.selected} handleClick={this.handleClick}/> )
+                        }                
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Save filters</button>
+                    <button type="button" class="btn btn-primary" onClick={this.props.handleClose} data-dismiss="modal">Save filters</button>
                 </div>
                 </div>
             </div>

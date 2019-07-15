@@ -15,6 +15,13 @@ const search = async (data) =>
         body: JSON.stringify(data),
     })).json();
 
+const filter = async (filters) =>
+    await (await fetch(('/.netlify/functions/filter/filter.js/'), 
+    {
+        method: 'POST',
+        body: JSON.stringify(filters),
+    })).json();
+
 const fetchWithId = (data) =>
     fetch('/.netlify/functions/fetch-with-id/fetch-with-id.js/'+data, 
     {
@@ -27,5 +34,6 @@ export default {
     readAll: readAll,
     search: search,
     fetchWithId: fetchWithId,
+    filter: filter,
     // add additional API export statements here
 }
