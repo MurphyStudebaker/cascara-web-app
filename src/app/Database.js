@@ -95,9 +95,8 @@ export default class Database extends Component {
                     <img className="mt-0 align-top w-100" src={swirl} alt=""/>
                 </div>
                 <div className="container">
-                    <div className="d-flex justify-content-between">
-                        <h5 className="mt-5">Staff Picks in Los Angeles </h5>
-                        
+                    <div className="d-flex justify-content-between mt-5">
+                        <h5 className="">Staff Picks in Los Angeles </h5>
                         <button className="d-flex justify-content-end btn btn-outline-primary py-0" data-toggle="modal" data-target="#filterModal">
                             <FontAwesomeIcon icon="filter" className="pb-0"/>
                         </button>
