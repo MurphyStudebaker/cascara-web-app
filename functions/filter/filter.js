@@ -4,7 +4,6 @@ const Airtable = require('airtable');
 exports.handler = function(event, context, callback) {
   const filters = JSON.parse(event.body);
   //const filters = data.filters;
-  console.log(filters)
   const send = body => {
     callback(null, {
       statusCode: 200,
@@ -27,12 +26,10 @@ exports.handler = function(event, context, callback) {
   for (var i in filters) {
     if(filters[i].selected === true) {
       selectedCount+=1
-      console.log("count: " + selectedCount)
     }
   }
 
   var length = ""+selectedCount
-  console.log("looping through " + length + "selected filters")
   var found = 0
 
   for (var x in filters) {
@@ -40,10 +37,8 @@ exports.handler = function(event, context, callback) {
     const field = filters[x].category;
     const selected = filters[x].selected;
     if(selected){
-      console.log("found" + text + " selected")
       formula+=  "FIND('"+text+"'," +field+") > 0";
       found += 1;
-      console.log("FOUND: " + found + " LENGTH: " + length)
       if(found < length) {
         formula+=","
       }
@@ -52,8 +47,6 @@ exports.handler = function(event, context, callback) {
 
   formula+=")"
   
-  console.log("formula: " + formula);
-
   base('Coffeehouses').select({
     view: "Grid view",
     filterByFormula: formula,
@@ -64,7 +57,6 @@ exports.handler = function(event, context, callback) {
       return; 
     }
     records.forEach(function(record) {
-      console.log('Retrieved: ', record.get('name'));
       results.push({
         img: record.get('photo')[0].thumbnails.large.url,
         id: record['id'],

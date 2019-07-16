@@ -50,7 +50,6 @@ export default class Database extends Component {
             console.log("fetching all")
             this.fetchAll()
         }
-        this.setState({loading: false})
     }
 
     handleFilterClick(object) {
@@ -85,13 +84,6 @@ export default class Database extends Component {
 
     render () {
         return (
-            this.state.loading ? (
-                <div className="loader h-100">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            ) : (
             <div>
                 <div className="foam mb-0 pt-5 pb-5">
                     <div className="container mb-0">
@@ -111,13 +103,22 @@ export default class Database extends Component {
                         </button>
                         <FilterModal options={this.state.filters} handleClick={this.handleFilterClick} handleClose={this.fetchFilteredResults}/>
                     </div>
-                    <div className="card-deck">
-                        {this.state.coffeehouses.length > 0 ? (this.state.coffeehouses.map(coffeehouse => <CoffeeCard {...coffeehouse}/>)) :
-                        <p>No results match your criteria.</p>}
-                    </div>
+                    {
+                        this.state.loading ? (
+                            <div className="loader h-100">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        ) : (
+                            <div className="card-deck">
+                                {this.state.coffeehouses.length > 0 ? (this.state.coffeehouses.map(coffeehouse => <CoffeeCard {...coffeehouse}/>)) :
+                                <p>No results match your criteria.</p>}
+                            </div> )
+                    }
+                    
                 </div>
             </div>
-            )
-        );
+        )
     }
 }
