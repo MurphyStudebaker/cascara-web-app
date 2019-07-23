@@ -26,6 +26,15 @@ export default class Header extends Component {
                 <FontAwesomeIcon icon={['fab','instagram']} size={70}/>
               </a>            
             </li>
+            <li>
+              {
+                this.props.isAuthenticated ? (
+                  <button className="btn btn-primary" onClick={this.props.logut}>Log Out</button>
+                ) : (
+                  <button className="btn btn-primary" onClick={this.props.login}>Log In</button>
+                )
+              }
+            </li>
           </ul>
         </div>
       </nav>
