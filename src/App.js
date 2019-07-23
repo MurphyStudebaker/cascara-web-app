@@ -67,17 +67,23 @@ const netlifyAuth = {
 
 const Header = withRouter(
   ({ history }) =>
-    <nav className="navbar navbar-expand-lg navbar-light container">
-        <Link to="/" className="navbar-brand">
-          <img src={logo} alt="Logo" width="30" height="30" className="d-inline-block align-top mr-1"/>
-            Cascara
-        </Link>      
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav className="navbar navbar-expand-lg navbar-light container flex-column flex-md-row">
+        <div className="flex-row d-md-flex justify-content-between">
+        <div>
+          <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          </div>  
+          <div>
+            <Link to="/" className="navbar-brand">
+              <img src={logo} alt="Logo" width="30" height="30" className="d-inline-block align-top mr-1"/>
+                Cascara
+            </Link> 
+          </div>   
+        </div>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
             <li class="nav-item">
               <Link to="/about" className="mr-2 nav-link"> About </Link>
             </li>
@@ -89,7 +95,7 @@ const Header = withRouter(
             <li>
               {
                 netlifyAuth.isAuthenticated ? (
-                  <button className="btn btn-primary"
+                  <button className="btn btn-primary ml-3"
                     onClick={() => {
                       netlifyAuth.signout(() => history.push('/'));
                     }}
@@ -98,7 +104,7 @@ const Header = withRouter(
                   </button>
               ) : (
                 <div>
-                  <button className="btn btn-primary"
+                  <button className="btn btn-primary ml-3"
                     onClick={() => {
                       netlifyAuth.authenticate(() => history.push('/'));
                     }}
@@ -135,6 +141,7 @@ function PrivateRoute({ component: Component, ...rest }) {
   );
 }
 
+/** DISPLAYS IF ACCESS DENIED */
 class Login extends React.Component {
   state = { redirectToReferrer: false };
 
@@ -159,19 +166,3 @@ class Login extends React.Component {
   }
 }
 export default AuthExample;
-
-/**
- * <div className="d-flex flex-column min-vh-100">
-        <div className="flex-shrink-0">
-          <Header isAuthenticated={this.state.isAuthenticated} login={this.authenticate} logout={this.signout}/>
-          <Switch>
-            <Route exact path="/" component={Database} />
-            <Route path="/about" component={Home} />
-            <Route path="/search/:id" component={SearchResults} />
-            <Route path="/:id" component={CoffeehousePage} />
-            <Route path="/login" component={Login} />
-          </Switch>
-        </div>
-        <Footer />
-      </div>
- */
