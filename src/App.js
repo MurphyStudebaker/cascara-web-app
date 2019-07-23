@@ -11,8 +11,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCoffee, faWifi, faFilter } from '@fortawesome/free-solid-svg-icons'
 import netlifyIdentity from 'netlify-identity-widget'
+import logo from './cascara_icon_100px.svg'
+import ls from 'local-storage'
 
-import Header from './Header';
 import Footer from './Footer';
 import Home from './pages/Home';
 import Database from './app/Database';
@@ -26,33 +27,31 @@ function AuthExample() {
   return (
     <Router>
       <div>
-        <AuthButton />
-        <ul>
-          <li>
-            <Link to="/app">Public Page</Link>
-          </li>
-          <li>
-            <Link to="/user">Protected Page</Link>
-          </li>
-        </ul>
-        <Route path="/app" component={Database} />
+        <Header />
+        <Route exact path="/" component={Database} />
         <Route path="/login" component={Login} />
         <PrivateRoute path="/user" component={Profile} />
+        <Route path="/about" component={Home} />
+        <Route path="/search/:id" component={SearchResults} />
+        <Route path="/coffeehouse/:id" component={CoffeehousePage} />
+        <Footer />
       </div>
     </Router>
   );
 }
 
 const netlifyAuth = {
-  isAuthenticated: false,
-  user: null,
+  isAuthenticated: ls.get('isAuthenticated') || false,
+  user: ls.get('user') || null,
   authenticate(callback) {
     this.isAuthenticated = true;
     netlifyIdentity.open();
     netlifyIdentity.on('login', user => {
       this.user = user;
+      ls.set('user', user)
       callback(user);
     });
+    ls.set('isAuthenticated', true)
   },
   signout(callback) {
     this.isAuthenticated = false;
@@ -61,25 +60,59 @@ const netlifyAuth = {
       this.user = null;
       callback();
     });
+    ls.set('isAuthenticated', false)
+    ls.set('user', null)
   }
 };
 
-const AuthButton = withRouter(
+const Header = withRouter(
   ({ history }) =>
-    netlifyAuth.isAuthenticated ? (
-      <p>
-        Welcome!{' '}
-        <button
-          onClick={() => {
-            netlifyAuth.signout(() => history.push('/'));
-          }}
-        >
-          Sign out
+    <nav className="navbar navbar-expand-lg navbar-light container">
+        <Link to="/" className="navbar-brand">
+          <img src={logo} alt="Logo" width="30" height="30" className="d-inline-block align-top mr-1"/>
+            Cascara
+        </Link>      
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </p>
-    ) : (
-      <p>You are not logged in.</p>
-    )
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <Link to="/about" className="mr-2 nav-link"> About </Link>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.instagram.com/getcascara/" className="nav-link">
+                <FontAwesomeIcon icon={['fab','instagram']} size={70}/>
+              </a>            
+            </li>
+            <li>
+              {
+                netlifyAuth.isAuthenticated ? (
+                  <button className="btn btn-primary"
+                    onClick={() => {
+                      netlifyAuth.signout(() => history.push('/'));
+                    }}
+                  >
+                    Sign out
+                  </button>
+              ) : (
+                <div>
+                  <button className="btn btn-primary"
+                    onClick={() => {
+                      netlifyAuth.authenticate(() => history.push('/'));
+                    }}
+                  >
+                    Login
+                  </button>
+                </div>
+              )
+
+              }
+            </li>
+          </ul>
+        </div>
+      </nav>
 );
 
 function PrivateRoute({ component: Component, ...rest }) {
@@ -119,8 +152,8 @@ class Login extends React.Component {
 
     return (
       <div>
-        <p>You must log in to view the page at {from.pathname}</p>
-        <button onClick={this.login}>Log in</button>
+        <p>This page is restricted to registered users.</p>
+        <button onClick={this.login}>Log In</button>
       </div>
     );
   }
