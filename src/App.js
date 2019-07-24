@@ -23,17 +23,19 @@ import Profile from './app/Profile'
 
 library.add(fab, faCoffee, faWifi, faFilter)
 
-function AuthExample() {
+function App() {
   return (
     <Router>
-      <div>
+      <div className="d-flex flex-column min-vh-100">
+        <div className="flex-shrink-0">
         <Header />
         <Route exact path="/" component={Database} />
         <Route path="/login" component={Login} />
-        <PrivateRoute path="/user" component={Profile} />
+        <PrivateRoute path="/user/:id" component={Profile} />
         <Route path="/about" component={Home} />
         <Route path="/search/:id" component={SearchResults} />
         <Route path="/coffeehouse/:id" component={CoffeehousePage} />
+        </div>
         <Footer />
       </div>
     </Router>
@@ -67,43 +69,38 @@ const netlifyAuth = {
 
 const Header = withRouter(
   ({ history }) =>
-    <nav className="navbar navbar-expand-lg navbar-light container flex-column flex-md-row">
-        <div className="flex-row d-md-flex justify-content-between">
-        <div>
-          <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          </div>  
+    <nav className="navbar navbar-light container flex-row">
           <div>
             <Link to="/" className="navbar-brand">
               <img src={logo} alt="Logo" width="30" height="30" className="d-inline-block align-top mr-1"/>
                 Cascara
             </Link> 
-          </div>   
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-            <li class="nav-item">
-              <Link to="/about" className="mr-2 nav-link"> About </Link>
-            </li>
-            <li class="nav-item">
-              <a href="https://www.instagram.com/getcascara/" className="nav-link">
-                <FontAwesomeIcon icon={['fab','instagram']} size={70}/>
-              </a>            
-            </li>
-            <li>
+          </div>  
+          <div> 
               {
                 netlifyAuth.isAuthenticated ? (
-                  <button className="btn btn-primary ml-3"
-                    onClick={() => {
-                      netlifyAuth.signout(() => history.push('/'));
-                    }}
-                  >
-                    Sign out
-                  </button>
+                  <div class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {netlifyAuth.user.email}                   
+                  </a>
+                   <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li className="ml-3 mt-2">
+                      <Link to={"/user/"+ netlifyAuth.user.id}>
+                      Profile
+                      </Link>
+                    </li>
+                    <li className="ml-3 mt-2">
+                      <button className="btn btn-primary"
+                      onClick={() => {
+                        netlifyAuth.signout(() => history.push('/'));
+                      }}
+                      >
+                      Logout
+                      </button>
+                    </li>
+                   </ul>
+                 </div>
               ) : (
-                <div>
                   <button className="btn btn-primary ml-3"
                     onClick={() => {
                       netlifyAuth.authenticate(() => history.push('/'));
@@ -111,13 +108,9 @@ const Header = withRouter(
                   >
                     Login
                   </button>
-                </div>
               )
-
               }
-            </li>
-          </ul>
-        </div>
+          </div>
       </nav>
 );
 
@@ -165,4 +158,4 @@ class Login extends React.Component {
     );
   }
 }
-export default AuthExample;
+export default App;

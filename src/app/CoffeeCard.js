@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import DefaultPhoto from './cascara-default-house.png'
 
 const CoffeeCard = ({id, img, name, streetAddress, city, coffeeScore, wifiScore, amenities, atmosphere, outletDesc, parking, photo, neighborhood, state, coffeeCost}) => (
-    <Link to={"/" + id} className="card m-2">
+    <Link to={"/coffeehouse/" + id} className="card m-2">
         <img className="card-img-top" src={img} alt="Photo of coffeehouse" />
         <div className="card-body">
             <h3 className="card-title">{name}</h3>
