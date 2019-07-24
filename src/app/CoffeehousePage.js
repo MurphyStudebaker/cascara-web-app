@@ -12,6 +12,8 @@ export class CoffeehousePage extends Component {
             },
             loading: true,
         };
+
+        this.getMapsURL = this.getMapsURL.bind(this)
     }
 
     //Runs after everything loads
@@ -31,7 +33,17 @@ export class CoffeehousePage extends Component {
         ) : (
           data
         )
-      }
+    }
+
+    getMapsURL() {
+        let address = this.state.currentCoffeehouse.address + ", " + this.state.currentCoffeehouse.city + ", " + this.state.currentCoffeehouse.state
+        let URL = "https://www.google.com/maps/dir/?api=1&destination=" +
+        encodeURIComponent(address)
+        console.log("MAPS URL " + URL)
+        return (URL)
+    
+    }
+
 
     render () {
         return this.state.loading ? (
@@ -50,9 +62,11 @@ export class CoffeehousePage extends Component {
                         <tr>
                             <th scope="row">Address</th>
                             <td>
+                                <a href={this.getMapsURL()} >
                                 {this.state.currentCoffeehouse.address + " " + 
                                 this.state.currentCoffeehouse.city + ", " + 
                                 this.state.currentCoffeehouse.state}
+                                </a>
                             </td>
                         </tr>
                         <tr>
