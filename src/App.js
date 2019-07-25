@@ -25,20 +25,18 @@ library.add(fab, faCoffee, faWifi, faFilter)
 
 function App() {
   return (
-    <Router>
       <div className="d-flex flex-column min-vh-100">
         <div className="flex-shrink-0">
-        <Header />
-        <Route exact path="/" component={Database} />
-        <Route path="/login" component={Login} />
-        <PrivateRoute path="/user/:id" component={Profile} />
-        <Route path="/about" component={Home} />
-        <Route path="/search/:id" component={SearchResults} />
-        <Route path="/coffeehouse/:id" component={CoffeehousePage} />
+          <Header />
+          <Route exact path="/" component={Database} />
+          <Route path="/login" component={Login} />
+          <PrivateRoute path="/user/:id" component={Profile} />
+          <Route path="/about" component={Home} />
+          <Route path="/search/:id" component={SearchResults} />
+          <Route path="/coffeehouse/:id" component={CoffeehousePage} />
         </div>
         <Footer />
       </div>
-    </Router>
   );
 }
 
@@ -78,7 +76,7 @@ const Header = withRouter(
           </div>  
           <div> 
               {
-                netlifyAuth.isAuthenticated ? (
+                netlifyAuth.user !== null ? (
                   <div class="nav-item dropdown">
                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {netlifyAuth.user.email}                   
