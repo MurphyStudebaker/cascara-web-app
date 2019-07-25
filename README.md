@@ -1,7 +1,6 @@
-[](cascara-screenshot.JPG)
+![](cascara-screenshot.JPG)
 
-# Cascara
-## Find Local Coffee
+# Cascara - Find Local Coffee
 
 View this project live at [Cascara](https://getcascara.com/). 
 
