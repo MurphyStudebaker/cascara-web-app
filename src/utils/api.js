@@ -30,10 +30,31 @@ const fetchWithId = (data) =>
         return response.json()
     })
 
+const addCoffeeshop = (data, userID) => {
+    console.log("USER ID: " + userID)
+    console.log("DATA" + JSON.stringify(data));
+    fetch(('/.netlify/functions/add-shop/add-shop.js'),
+    {
+        method: 'POST',
+        headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            data: data,
+            userID: userID,
+        }),
+    }).then(response => {
+        console.log("GOT RESPONSE");
+        return response.json()
+    })
+}
+
 export default {
     readAll: readAll,
     search: search,
     fetchWithId: fetchWithId,
     filter: filter,
+    addCoffeeshop: addCoffeeshop,
     // add additional API export statements here
 }
