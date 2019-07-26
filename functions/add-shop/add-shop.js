@@ -2,13 +2,9 @@ const Airtable = require('airtable');
 
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 exports.handler = function(event, context, callback) {
-  console.log("FUNCTION EVENT: " + JSON.stringify(event));
   const body = JSON.parse(event.body);
-  console.log("POST BODY: " + body);
-
   const userID = body.userID;
-  console.log("FUNCTION USER ID: " + userID);
-  const name = body.data.name;
+  const data = body.data;
 
   //const filters = data.filters;
   const send = body => {
@@ -28,7 +24,14 @@ exports.handler = function(event, context, callback) {
 
   base('UserSubmissions').create({
     "netlifyID": userID,
-    "name": name,
+    "name": data.name,
+    "streetAddress": data.address,
+    "city": data.city,
+    "neighborhood": data.neighborhood,
+    "state": data.state,
+    "goodFor": data.goodFor,
+    "outletDesc": data.outletDesc,
+    "seatingDesc": data.seatingDesc,
   }, function(err, record) {
     if (err) {
       console.error(err);

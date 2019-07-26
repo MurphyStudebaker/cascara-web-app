@@ -25,17 +25,31 @@ export default class SearchForm extends React.Component {
 
     handleChange(event) {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
+        if (target.type === "multiselect") {
+            console.log("MULTISELECT DETECTED")
+            const selected = target.value;
+            const name = target.name;
+            
+            const newValue = [...this.state.name, selected]
 
-        this.setState({
-            [name]: value
-        });
+            this.setState({
+                [name]: newValue
+            });
+        } else {
+            const value = target.value;
+            const name = target.name;
+    
+            this.setState({
+                [name]: value
+            });
+        }
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        api.addCoffeeshop({"name" : this.state.name}, netlifyIdentity.currentUser().id)
+        api.addCoffeeshop(
+           this.state
+        , netlifyIdentity.currentUser().id)
     }
 
     render() {
@@ -62,10 +76,37 @@ export default class SearchForm extends React.Component {
                             ) : (
                                 <div>
                                     <div class="modal-body">
-                                        <form className="form-inline pt-3" onSubmit={this.handleSubmit}>
+                                        <form className="pt-3" onSubmit={this.handleSubmit}>
                                             <div class="form-group">
                                                 <label for="coffeeNameInput">Coffeehouse</label>
                                                 <input onChange={this.handleChange} type="text" name="name" class="form-control" id="coffeeNameInput" placeholder="name@example.com"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Street Address</label>
+                                                <input onChange={this.handleChange} type="text" name="address" class="form-control" id="" placeholder=""/>
+                                                <label for="">City</label>
+                                                <input onChange={this.handleChange} type="text" name="city" class="form-control" id="" placeholder=""/>
+                                                <label for="">State</label>
+                                                <input onChange={this.handleChange} type="text" name="state" class="form-control" id="" placeholder=""/>
+                                            </div>
+                                            <div className="form-group">
+                                            <label for="exampleFormControlSelect2">This place is good for: </label>
+                                                <select multiple class="form-control" id="" name="goodFor" type="multiselect" onChange={this.handleChange}>
+                                                    <option type="multiselect">Reading</option>
+                                                    <option type="multiselect">Working</option>
+                                                    <option type="multiselect">Meeting</option>
+                                                    <option type="multiselect">Grab and Go</option>
+                                                </select>
+                                            </div>
+                                            <div className="form-group">
+                                                <label for="">Neighborhood</label>
+                                                <input onChange={this.handleChange} type="text" name="neighborhood" class="form-control" id="" placeholder=""/>
+                                            </div>
+                                            <div className="form-group">
+                                                <label for="">How many outlets are there and where are they located?</label>
+                                                <textarea onChange={this.handleChange} class="form-control" id="" rows="3" name="outletDesc"></textarea>
+                                                <label for="">What's the seating like?</label>
+                                                <textarea onChange={this.handleChange} class="form-control" id="" rows="3" name="seatingDesc"></textarea>
                                             </div>
                                         </form>
                                     </div>
