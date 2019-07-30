@@ -95,12 +95,7 @@ export default class Database extends Component {
                 <div className="vw-100 mw-100">
                     <img className="mt-0 align-top w-100" src={swirl} alt=""/>
                 </div>
-                <div className="container">
-                    <button className="btn btn-primary" type="button" data-toggle="modal" data-target="#submissionModal">
-                        Add a Coffeeshop
-                    </button>
-                    <CoffeeSubmissionForm />
-                </div>
+                
                 <div className="container">
                     <div className="d-flex justify-content-between mt-5">
                         <h5 className="">Staff Picks in Los Angeles </h5>

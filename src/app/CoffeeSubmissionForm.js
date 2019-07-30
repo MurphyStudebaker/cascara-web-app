@@ -25,16 +25,22 @@ export default class SearchForm extends React.Component {
 
     handleChange(event) {
         const target = event.target;
-        if (target.type === "multiselect") {
-            console.log("MULTISELECT DETECTED")
-            const selected = target.value;
-            const name = target.name;
-            
-            const newValue = [...this.state.name, selected]
+        console.log("CHANGE IN " + target.type)
+        if (target.type === "select-multiple") {
+            var options = target.options
+            var value = []
+            const name = target.name
+
+            for (var i = 0, l = options.length; i < l; i++) {
+              if (options[i].selected) {
+                value.push(options[i].value)
+              }
+            }
 
             this.setState({
-                [name]: newValue
+                [name]: value
             });
+            
         } else {
             const value = target.value;
             const name = target.name;
@@ -79,7 +85,7 @@ export default class SearchForm extends React.Component {
                                         <form className="pt-3" onSubmit={this.handleSubmit}>
                                             <div class="form-group">
                                                 <label for="coffeeNameInput">Coffeehouse</label>
-                                                <input onChange={this.handleChange} type="text" name="name" class="form-control" id="coffeeNameInput" placeholder="name@example.com"/>
+                                                <input onChange={this.handleChange} type="text" name="name" class="form-control" id="coffeeNameInput" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="">Street Address</label>

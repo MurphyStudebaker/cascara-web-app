@@ -1,19 +1,22 @@
 import React from 'react';
 import netlifyIdentity from 'netlify-identity-widget';
 import ls from 'local-storage'
+import CoffeeSubmissionForm from './CoffeeSubmissionForm'
+import Database from './Database';
 
 export default function Protected() {
   const user = netlifyIdentity.currentUser();
-  console.log({ user });
   
   return (
+    <div className="">
     <div className="container mt-5">
-      <h3>Hey there!</h3>
-      <p>
-        You are currently logged in as <b>{user.email}</b><br />
-        The user profile feature is currently brewing. 
-        Come back soon to leave reviews and add your favorite coffee shops!
-      </p>
+      <h1 className="title pt-5 giant-text">Hi, {user.user_metadata.full_name}! </h1>
+      
+      <button className="btn btn-primary mt-3 p-3" type="button" data-toggle="modal" data-target="#submissionModal">
+          Add a Coffeeshop
+      </button>
+      <CoffeeSubmissionForm />
+    </div>
     </div>
   );
 }
