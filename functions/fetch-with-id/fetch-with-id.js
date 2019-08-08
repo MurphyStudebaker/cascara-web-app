@@ -48,7 +48,7 @@ exports.handler = function(event, context, callback) {
         outletDesc: checkDefault('outletDesc'),
         seatingDesc: checkDefault('seatingDesc'),
         amenities: record.get('amenities'),
-        atmosphere: record.get('atmosphere'),
+        goodFor: record.get('goodFor'),
       }
       send(house);
     })

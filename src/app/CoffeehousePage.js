@@ -56,25 +56,24 @@ export class CoffeehousePage extends Component {
             <div>
             <img src={this.state.currentCoffeehouse.img} className="img-header"/>
             <div className="container">
-                <h1 className="mt-5">{this.state.currentCoffeehouse.name}</h1>
-                <table className="table table-borderless">
+                <h1 className="heading mt-5">{this.state.currentCoffeehouse.name}</h1>
+                <h4 className="subheading text-muted mb-3">{this.state.currentCoffeehouse.neighborhood}</h4>
+
+                <a className="btn btn-outline-primary btn-large btn-block" href={this.getMapsURL()}>Visit</a>
+                
+                <h4 className="mt-5">Details</h4>
+                <table className="table table-borderless ml-0 pl-0">
                     <tbody>
                         <tr>
                             <th scope="row">Address</th>
                             <td>
-                                <a href={this.getMapsURL()} >
                                 {this.state.currentCoffeehouse.address + " " + 
                                 this.state.currentCoffeehouse.city + ", " + 
                                 this.state.currentCoffeehouse.state}
-                                </a>
+                        
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">Neighborhood</th>
-                            <td>
-                                {this.state.currentCoffeehouse.neighborhood}
-                            </td>
-                        </tr>
+                        
                         <tr>
                             <th scope="row">Outlets</th>
                             <td>{this.checkForDefault(this.state.currentCoffeehouse.outletDesc)}</td>
@@ -92,15 +91,15 @@ export class CoffeehousePage extends Component {
                             <td>{this.state.currentCoffeehouse.wifiScore}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Amenities</th>
+                            <th scope="row">Good For</th>
                             <div>
-                                {this.state.currentCoffeehouse.amenities.map(entry => <td className="badge badge-light m-1">{entry}</td>)}
+                                {this.state.currentCoffeehouse.goodFor.map(entry => <td className="badge badge-light m-1">{entry}</td>)}
                             </div>
                         </tr>
                         <tr>
-                            <th scope="row">Atmosphere</th>
+                            <th scope="row">Amenities</th>
                             <div>
-                                {this.state.currentCoffeehouse.atmosphere.map(entry => <td className="badge badge-light m-1">{entry}</td>)}
+                                {this.state.currentCoffeehouse.amenities.map(entry => <td className="badge badge-light m-1">{entry}</td>)}
                             </div>
                         </tr>
                     </tbody>

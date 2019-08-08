@@ -42,11 +42,11 @@ export default class FilterModal extends Component {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h3>Atmosphere</h3>
+                    <h3>Good For</h3>
                     <div>
                         {
-                            this.getFilterOptions("atmosphere").map((option, i) => 
-                            <SelectableChip key={i} index={i} text={option.text} category="atmosphere" selected={option.selected} handleClick={this.handleClick}/> )
+                            this.getFilterOptions("goodFor").map((option, i) => 
+                            <SelectableChip key={i} index={i} text={option.text} category="goodFor" selected={option.selected} handleClick={this.handleClick}/> )
                         }                
                     </div>
                     <h3>Amenities</h3>
