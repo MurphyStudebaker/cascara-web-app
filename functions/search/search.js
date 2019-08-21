@@ -44,7 +44,7 @@ exports.handler = function(event, context, callback) {
         neighborhood: record.get('neighborhood'),
         coffeeScore: record.get('coffeeScore'),
         wifiScore: record.get('wifiScore'),
-        amenities: record.get('amenities'),
+        goodFor: record.get('goodFor'),
       });
     });
     send(results);
