@@ -13,7 +13,7 @@
     "jquery": "^3.4.1",
     "local-storage": "^2.0.0",
     "netlify-identity-widget": "^1.5.5",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "node-sass": "^4.11.0",
     "popper.js": "^1.15.0",
     "react": "next",
