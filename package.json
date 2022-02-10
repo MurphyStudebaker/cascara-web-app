@@ -14,7 +14,7 @@
     "local-storage": "^2.0.0",
     "netlify-identity-widget": "^1.5.5",
     "node-fetch": "^2.6.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "popper.js": "^1.15.0",
     "react": "next",
     "react-dom": "next",
